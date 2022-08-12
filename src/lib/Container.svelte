@@ -1,12 +1,10 @@
 <script lang="ts">
-     import Button, { Label } from '@smui/button';
-     let clicked;
 </script>
 
-<style></style>
+<style>
+    .contianer{ width: 50vw; height: 50%; border-radius: 4px;  box-shadow: var(--shadowColor); padding: 16px 0; }
+</style>
 
-<section>
-    <Button on:click={() => clicked++} variant="raised">
-        <Label>Raised</Label>
-    </Button>
+<section class="contianer">
+     <slot/>
 </section>
