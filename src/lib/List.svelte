@@ -8,7 +8,6 @@
 </script>
 
 <style lang='scss'>
-    /* .wrapper { width: 33.33%; } */
     .content { 
         padding: 15px 0; 
         & > :global(.mdc-card) { 
@@ -22,7 +21,7 @@
     <ul class="content">
         {#if dataes.length}
             {#each dataes as data (data.uuid)}
-                <Item data={data} />
+                <Item data={data} on:select on:delete />
             {/each}
         {:else}
             <p>no data</p>

@@ -6,8 +6,8 @@
 
 <style lang="scss">
     .title {
-        color: #666;
-        & > :global(.icon) { color: #999; margin-right: 5px; }
+        color: #666; margin: 0 5px;
+        & > :global(.icon) { color: #999; margin-right: 5px; width: 0; flex: 1; }
     }
     
 </style>
