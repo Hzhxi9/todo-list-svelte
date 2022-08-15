@@ -1,16 +1,37 @@
 <script lang="ts">
     import { Title, Item } from './index';
+    import { quintOut } from 'svelte/easing'
+    import { crossfade } from 'svelte/transition'
+    import { flip } from 'svelte/animate';
 
     export let title = '';
     export let icon: string | undefined = ''
 
     export let dataes = []
+
+
+    const [send, receive] = crossfade({
+		duration: d => Math.sqrt(d * 200),
+
+		fallback(node, params) {
+			const style = getComputedStyle(node);
+			const transform = style.transform === 'none' ? '' : style.transform;
+			return {
+				duration: 600,
+				easing: quintOut,
+				css: t => `
+					transform: ${transform} scale(${t});
+					opacity: ${t}
+				`
+			};
+		}
+	});
 </script>
 
 <style lang='scss'>
     .content { 
         padding: 15px 0; 
-        & > :global(.mdc-card) { 
+        & > :global(.card) { 
             &:not(:last-child){ margin-bottom: 10px;}
          }
     }
@@ -21,7 +42,9 @@
     <ul class="content">
         {#if dataes.length}
             {#each dataes as data (data.uuid)}
-                <Item data={data} on:select on:delete />
+                <div class="card" in:receive="{{key: data.uuid}}" out:send="{{key: data.uuid}}" animate:flip>
+                    <Item data={data} on:select on:delete />
+                </div>
             {/each}
         {:else}
             <p>no data</p>

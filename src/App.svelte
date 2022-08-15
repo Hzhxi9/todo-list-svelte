@@ -79,6 +79,6 @@
 <style lang="scss">
   .layout { 
     width: 100vw; height: 100vh; display: flex;justify-content: center; align-items: center;
-    & :global(.grid) { flex: 1; overflow: auto; }
+    & :global(.grid) { flex: 1; overflow: auto; transition: height 0.2s, overflow 0.3s, flex 0.5s; }
   }
 </style>

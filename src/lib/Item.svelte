@@ -5,11 +5,12 @@
   import { createEventDispatcher } from 'svelte'
 
   const dispatch = createEventDispatcher()
-
   export let data
 </script>
 
-<Card class="card" on:click={() => dispatch('select', data)}>
+
+
+<Card on:click={() => dispatch('select', data)} >
   <PrimaryAction padded>
     <div class="flex">
       <Checkbox bind:checked={data.status} disabled={data.status === 1} />
@@ -24,6 +25,7 @@
     </div>
   </PrimaryAction>
 </Card>
+
 
 <style lang="scss">
   .flex { 
