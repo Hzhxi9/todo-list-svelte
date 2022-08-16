@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Title, Item } from './index';
     import { quintOut } from 'svelte/easing'
-    import { crossfade } from 'svelte/transition'
+    import { crossfade, fly } from 'svelte/transition'
     import { flip } from 'svelte/animate';
 
     export let title = '';
@@ -47,7 +47,7 @@
                 </div>
             {/each}
         {:else}
-            <p>no data</p>
+            <p in:fly="{{ duration: 500 }}">no data</p>
         {/if}
       
     </ul>

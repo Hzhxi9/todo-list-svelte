@@ -9,10 +9,7 @@
   export let value = '';
 
   function sumbit(event) {
-    if (event.keyCode === 13) {
-      dispatch('submit', value);
-      value = ''
-    }
+    if (event.keyCode === 13)  dispatch('submit', value);
   }
 </script>
 

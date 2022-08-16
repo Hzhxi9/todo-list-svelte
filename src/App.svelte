@@ -21,10 +21,11 @@
   });
 
   function sumbit(event: CustomEvent){
-    const value = event.detail;
-    if(value){
-      const data = { uuid: list[list.length - 1].uuid + 1, content: value, status: 0 }
+    const _value = event.detail;
+    if(_value){
+      const data = { uuid: list[list.length - 1].uuid + 1, content: _value, status: 0 }
       list = list.concat(data)
+      value = ''
     }
   }
 
@@ -67,7 +68,7 @@
 
 <main class="layout">
   <Container>
-    <Input bind:value on:submit={sumbit}  />
+    <Input bind:value on:submit={sumbit}   />
     <LayoutGrid class="grid">
       <Cell><List title="todo" dataes={todo} icon="assignment_outlined" on:select={select} on:delete={handleDelete} /></Cell>
       <Cell><List title="done" dataes={done} icon="assignment_turned_in_outlined" /></Cell>
